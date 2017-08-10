@@ -1,0 +1,20 @@
+plugins {
+    id 'application'
+    id 'nebula.dependency-recommender' version '4.5.0'
+}
+
+mainClassName = 'Application'
+
+repositories {
+    mavenCentral()
+}
+
+dependencyRecommendations {
+    mavenBom module: 'io.spring.platform:platform-bom:Brussels-SR4'
+}
+
+dependencies {
+    implementation 'javax.inject:javax.inject'
+
+    implementation 'lib:lib:0.1'
+}
