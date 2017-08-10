@@ -1,0 +1,29 @@
+= Nebula Dependency Recommender Test
+
+== Failure scenario
+I am expecting the composite build to work from `app` because `lib` also defines a recommendation bom.
+
+----
+$ app> ./gradlew run --include-build ../lib
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Could not determine the dependencies of task ':run'.
+> Could not resolve all task dependencies for configuration ':runtimeClasspath'.
+   > Could not find junit:junit:.
+     Searched in the following locations:
+         https://repo1.maven.org/maven2/junit/junit//junit-.pom
+         https://repo1.maven.org/maven2/junit/junit//junit-.jar
+     Required by:
+         project : > project :lib
+
+* Try:
+Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output.
+
+* Get more help at https://help.gradle.org
+
+BUILD FAILED in 1s
+----
+
+I would like to have this work with Gradle 4.1 but I also tried 3.5.1 with the same results.
